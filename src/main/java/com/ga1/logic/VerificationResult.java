@@ -2,6 +2,7 @@ package com.ga1.logic;
 
 public class VerificationResult {
 
+	private static final String NO_ERROR_MESSAGE = "NO ERROR MESSAGE";
 	private boolean isCorrectMove;
 	private String errorMessage;
 	
@@ -16,7 +17,7 @@ public class VerificationResult {
 
 	public String getErrorMessage() {
 		if (isCorrectMove)
-			throw new IllegalStateException("NO ERROR MESSAGE");
+			throw new IllegalStateException(NO_ERROR_MESSAGE);
 		return errorMessage;
 	}
 

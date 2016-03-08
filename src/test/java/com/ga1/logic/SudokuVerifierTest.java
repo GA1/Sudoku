@@ -19,8 +19,15 @@ public class SudokuVerifierTest {
 	}
 	
 	@Test
-	public void verificationSuccess() {
+	public void verificationSuccess1() {
 		move = new Move(2, 2, 9);
+		result = testSubject.verify(move);
+		assertTrue(result.isCorrectMove());
+	}
+	
+	@Test
+	public void verificationSuccess2() {
+		move = new Move(5, 6, 3);
 		result = testSubject.verify(move);
 		assertTrue(result.isCorrectMove());
 	}
@@ -55,6 +62,22 @@ public class SudokuVerifierTest {
 		result = testSubject.verify(move);
 		assertFalse(result.isCorrectMove());
 		assertEquals("Column must be in range from 1 to 9 (both inclusive)", result.getErrorMessage());
+	}
+	
+	@Test
+	public void incorrectValueVerificationFail1() {
+		move = new Move(2, 2, 10);
+		result = testSubject.verify(move);
+		assertFalse(result.isCorrectMove());
+		assertEquals("Value must be in range from 1 to 9 (both inclusive)", result.getErrorMessage());
+	}
+	
+	@Test
+	public void incorrectValueVerificationFail2() {
+		move = new Move(2, 2, 0);
+		result = testSubject.verify(move);
+		assertFalse(result.isCorrectMove());
+		assertEquals("Value must be in range from 1 to 9 (both inclusive)", result.getErrorMessage());
 	}
 	
 	@Test
@@ -116,6 +139,14 @@ public class SudokuVerifierTest {
 	@Test
 	public void squareVerificationFail2() {
 		move = new Move(9, 5, 7);
+		result = testSubject.verify(move);
+		assertFalse(result.isCorrectMove());
+		assertEquals("This number is already in this square", result.getErrorMessage());
+	}
+	
+	@Test
+	public void squareVerificationFail3() {
+		move = new Move(6, 6, 6);
 		result = testSubject.verify(move);
 		assertFalse(result.isCorrectMove());
 		assertEquals("This number is already in this square", result.getErrorMessage());

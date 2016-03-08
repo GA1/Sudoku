@@ -7,6 +7,7 @@ public class SudokuVerifier {
 
 	private static final String INCORRECT_ROW = "Row must be in range from 1 to 9 (both inclusive)";
 	private static final String INCORRECT_COLUMN = "Column must be in range from 1 to 9 (both inclusive)";
+	private static final String INCORRECT_VALUE = "Value must be in range from 1 to 9 (both inclusive)";
 	private static final String THIS_NUMBER_IS_ALREADY_IN_THIS_ROW = "This number is already in this row";
 	private static final String THIS_NUMBER_IS_ALREADY_IN_THIS_COLUMN = "This number is already in this column";
 	private static final String THIS_NUMBER_IS_ALREADY_IN_THIS_SQUARE = "This number is already in this square";
@@ -26,6 +27,8 @@ public class SudokuVerifier {
 			return new VerificationResult(false, INCORRECT_ROW);
 		if (move.getColumn() < 1 || 9 < move.getColumn())
 			return new VerificationResult(false, INCORRECT_COLUMN);
+		if (move.getValue() < 1 || 9 < move.getValue())
+			return new VerificationResult(false, INCORRECT_VALUE);
 		if (isOccupied(move))
 			return new VerificationResult(false, THE_CELL_IS_ALREADY_OCCUPIED);
 		if (!isValidHorizontally(move.getRow(), move.getValue()))
@@ -55,7 +58,7 @@ public class SudokuVerifier {
 	private boolean isValidSquare(int row, int column, int value) {
 		int rowSquareStart = 3*((row - 1)/3);
 		int rowSquareEnd = rowSquareStart + 3;
-		int columnSquareStart = (column - 1)/3;
+		int columnSquareStart = 3*((column - 1)/3);
 		int columnSquareEnd = rowSquareStart + 3;
 		for (int i = rowSquareStart; i <rowSquareEnd; i++)
 			for (int j = columnSquareStart; j <columnSquareEnd; j++)
