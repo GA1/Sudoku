@@ -1,4 +1,4 @@
-package com.ga1.logic;
+package com.ga1.logic.putnumber;
 
 public class Move {
 	

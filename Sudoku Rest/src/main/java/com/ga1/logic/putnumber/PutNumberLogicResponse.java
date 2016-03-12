@@ -1,16 +1,18 @@
-package com.ga1.logic;
+package com.ga1.logic.putnumber;
 
-public class VerificationResult {
+public class PutNumberLogicResponse {
 
 	private static final String NO_ERROR_MESSAGE = "NO ERROR MESSAGE";
 	private boolean isCorrectMove;
+	private boolean isFinished; 
 	private String errorMessage;
 	
-	public VerificationResult(boolean isCorrectMove) {
+	public PutNumberLogicResponse(boolean isCorrectMove, boolean isFinished) {
 		this.isCorrectMove = isCorrectMove;
+		this.isFinished = isFinished;
 	}
 	
-	public VerificationResult(boolean isCorrectMove, String errorMessage) {
+	public PutNumberLogicResponse(boolean isCorrectMove, String errorMessage) {
 		this.isCorrectMove = isCorrectMove;
 		this.errorMessage = errorMessage;
 	}
@@ -33,4 +35,11 @@ public class VerificationResult {
 		this.errorMessage = errorMessage;
 	}
 
+	public boolean getIsFinished() {
+		return isFinished;
+	}
+
+	public void setIsFinished(boolean isFinished) {
+		this.isFinished = isFinished;
+	}
 }
