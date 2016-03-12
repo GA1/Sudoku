@@ -1,4 +1,4 @@
-package com.ga1.SudokuIntegrationTests;
+package com.ga1.SudokuIntegrationTest;
 
 import static org.junit.Assert.*;
 
