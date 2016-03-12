@@ -27,6 +27,7 @@ to see the result of integration tests
 If you want to call the server in the browser use any http client like "DHC client" to call manually the endpoints of the 2 restservices provided. There are examples of calling them below:
 
 post http://localhost:8080/sudoku/newGame
+
 post localhost:8080/sudoku/putNumber/1?row=5&column=6&value=7
 
 
